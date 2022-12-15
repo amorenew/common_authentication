@@ -1,5 +1,5 @@
 name: common_authentication
-description: A new Flutter package project.
+description: Allow common authentication by firebase auth for all platforms
 version: 0.0.1
 homepage: 'https://github.com/amorenew/common_authentication'
 environment:
