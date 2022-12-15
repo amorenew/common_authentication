@@ -5,9 +5,7 @@ import 'dart:convert';
 import 'dart:js' as js;
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
-// ignore: depend_on_referenced_packages
 import 'package:common_authentication/src/services/google_auth/sign_in_google_query_parameters.dart';
-// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'dart:math';
 import 'package:flutter/foundation.dart';
