@@ -1,6 +1,6 @@
 name: common_authentication
 description: Allow common authentication by firebase auth for all platforms
-version: 0.0.1
+version: 0.0.2
 homepage: 'https://github.com/amorenew/common_authentication'
 environment:
   sdk: '>=2.18.5 <3.0.0'
