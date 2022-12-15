@@ -1,7 +1,6 @@
 library common_authentication;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/context_extension.dart';
+export 'src/auth.dart';
+export 'src/application/auth/auth_bloc.dart';
+export 'src/services/google_auth/sign_in_google_query_parameters.dart';
