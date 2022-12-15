@@ -17,14 +17,14 @@ to `/example` folder.
 
 1- In yout app add Auth bloc
 
-     return MultiBlocProvider(
+    ```dart return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
           create: (_) => AuthBloc(),
-       ),
+        ),
       ],
-      child: MaterialApp(..),
-      );
+      child: MaterialApp());
+```
 
 2- 
 
