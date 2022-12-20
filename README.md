@@ -1,21 +1,20 @@
 Allow common authentication by firebase auth for all platforms
 
-## Features
+#### Features
 
 - Login by Google on Mobile, Desktop and Web.
 
-## Getting started
+#### Getting started
 
 List prerequisites and provide or point to information on how to
 start using the package.
 
-## Usage
+#### Usage
 
- Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+You can check example folder for how to integrate it but **I didn't add real firebase client id**
 
 
-1- In yout app add Auth bloc
+1- In your app add Auth bloc
 
 ```dart  
 return MultiBlocProvider(
@@ -28,10 +27,24 @@ return MultiBlocProvider(
       );
 ```
 
-2- 
+2- Add Login functionality to your login page
 
 ```dart 
+class GoogleSignInButton extends StatelessWidget {
+  const GoogleSignInButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GoogleLoginButton(
+      onPressed: () {
+        context.read<AuthBloc>().add(AuthGoogleLoginEvent());
+      },
+    );
+  }
+}
+
 class LoginPage extends StatefulWidget {
+  //used to get query parameters when google login redirect in web
   final SignInGoogleQueryParameters? queryParameters;
 
   const LoginPage({Key? key, this.queryParameters}) : super(key: key);
@@ -47,17 +60,27 @@ class _LoginPageState extends State<LoginPage> {
     initGoogleSignIn();
     context.read<AuthBloc>().add(AuthCheckStatusEvent());
   }
-  
-    @override
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
-             listener: (context, state) {
-              if (state is AuthLoggedInState) {
-               Navigator.of(context).pushReplacementNamed('/home');
-                        }
-                      },
-                      child: const GoogleSignInButton(),
-                    );
-            }
+      listener: (context, state) {
+        if (state is AuthLoggedInState) {
+          Navigator.of(context).pushReplacementNamed('/home');
+        }
+      },
+      child: ElevatedButton(
+        onPressed: () => context.read<AuthBloc>().add(
+              AuthGoogleLoginEvent(),
+            ),
+        child: const Text('Login By Google'),
+      ),
+    );
   }
+}
   ```
+3- Logout by the following event
+
+```dart
+context.read<AuthBloc>().add(AuthLogoutEvent());
+ ```
